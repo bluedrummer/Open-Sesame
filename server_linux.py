@@ -50,27 +50,27 @@ def start_server():
                 unblock_ip(ip)  # Remove IP from block list
                 response = "Your IP has been authorized. You can now access this port."
             print(f"Authorized IPs for this port: {authorized_ips}")
-#            server_socket.sendto(response.encode('utf-8'), addr)
+            #server_socket.sendto(response.encode('utf-8'), addr)
 
         elif message == CORRECT_KEY_CLOSE:
             if ip in authorized_ips:
                 authorized_ips.remove(ip)
                 block_ip(ip)  # Add IP to block list
-                #response = "Your IP has been de-authorized. You can no longer access this port."
+                response = "Your IP has been de-authorized. You can no longer access this port."
             else:
                 response = "Your IP was not authorized."
             print(f"Authorized IPs for this port: {authorized_ips}")
-#            server_socket.sendto(response.encode('utf-8'), addr)
+            #server_socket.sendto(response.encode('utf-8'), addr)
 
         elif ip in authorized_ips:
             # Handle normal traffic from authorized IPs
             response = f"Server received your message: {message}"
-#            server_socket.sendto(response.encode('utf-8'), addr)
+            #server_socket.sendto(response.encode('utf-8'), addr)
         else:
             # Ignore traffic from unauthorized IPs
             print(f"Ignored traffic from unauthorized IP: {ip}")
             response = "Access denied. Your IP is not authorized for this port."
-#            server_socket.sendto(response.encode('utf-8'), addr)
+            #server_socket.sendto(response.encode('utf-8'), addr)
 
 # Block all traffic to the port initially
 def initialize_block_all():
