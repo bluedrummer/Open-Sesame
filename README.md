@@ -4,7 +4,7 @@
 
 The **Open Sesame Server** is a Python-based server that allows or denies access to a specific port based on the IP address of the client and the key they provide. The server starts with the port being blocked for all IPs. If a client sends the correct "open" code, their IP is unblocked for the port. If they send the "close" code, their IP is blocked again.
 
-This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamically block and unblock specific IPs. It modifies firewall rules to allow access to the server's port based on the provided keys.
+This server uses **iptables** (**Linux**) to dynamically block and unblock specific IPs. It modifies firewall rules to allow access to the server's port based on the provided keys.
 
 ## Features
 
@@ -15,7 +15,7 @@ This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamic
 
 ## Prerequisites
 
-- **macOS** or **Linux** (with `iptables` installed on Linux).
+- **Linux** (with `iptables` installed on Linux).
 - **Python 3.x** installed.
 - **Admin privileges** are required to run the script because it modifies firewall settings using **pfctl** (macOS) or **iptables** (Linux).
 
@@ -23,7 +23,6 @@ This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamic
 ## Versions
 
 - **server_simple.py**: A basic version of the server used for testing. It doesn't modify firewall rules and is ideal for quick testing.
-- **server_macos.py**: The version of the server for macOS, using **pfctl** to manage firewall rules.
 - **server_linux.py**: The version of the server for Linux, using **iptables** to manage firewall rules.
 - **client.py**: A client script used for testing the server, sending the "open_sesame" and "close_sesame" keys to control access.
 
@@ -38,11 +37,11 @@ The Open_Sesame server listens for incoming connections on a specified host and 
    - Use `HOST = "0.0.0.0"` to listen on all interfaces (less secure but more flexible). OTHERWISE use the IP address of the interface you would like the code to listen on
 
 2. **Firewall Configuration**:
-   - The server dynamically manages access using `iptables` (Linux) or `pfctl` (macOS), blocking the specified port by default.
+   - The server dynamically manages access using `iptables` (Linux), blocking the specified port by default.
    - Ensure you have administrative privileges to allow the server to modify firewall rules.
 
 3. **Verify Network Interfaces**:
-   - Use `ifconfig` (macOS/Linux) or `ip addr` (Linux) to check your interface IPs before setting `HOST`.
+   - Use `ip addr` (Linux) to check your interface IPs before setting `HOST`.
 
 4. **Response to Attempts**
    - The code defaults to having all responses commented out, making the server effectively 'silent.' This means the server does not respond to any messages from the sender, even if they provide the correct code. Instead, it passively opens the port for authorized IPs without providing any feedback.
