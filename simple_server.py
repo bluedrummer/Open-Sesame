@@ -2,7 +2,7 @@ import socket
 
 CORRECT_KEY = "open_sesame"
 PORT = 12345
-HOST = "0.0.0.0"
+HOST = "10.10.10.10"
 
 def start_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

@@ -5,7 +5,7 @@ import subprocess
 CORRECT_KEY_OPEN = "open_sesame"
 CORRECT_KEY_CLOSE = "close_sesame"
 PORT = 12345
-HOST = "0.0.0.0"
+HOST = "10.10.10.10"
 
 def block_ip(ip):
     """Block an IP from accessing this port using iptables."""
