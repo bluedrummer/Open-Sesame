@@ -11,7 +11,7 @@ def block_ip(ip):
     """Block an IP from accessing this port using iptables."""
     try:
         subprocess.run(
-            ["iptables", "-A", "INPUT", "-s", ip, "-p", "udp", "--dport", str(PORT), "-j", "DROP"],
+            ["iptables", "-A", "INPUT", "-s", ip, "-p", "all", "--dport", str(PORT), "-j", "DROP"],
             check=True
         )
         print(f"Blocked IP: {ip}")
@@ -22,7 +22,7 @@ def unblock_ip(ip):
     """Unblock an IP from accessing this port using iptables."""
     try:
         subprocess.run(
-            ["iptables", "-D", "INPUT", "-s", ip, "-p", "udp", "--dport", str(PORT), "-j", "DROP"],
+            ["iptables", "-D", "INPUT", "-s", ip, "-p", "all", "--dport", str(PORT), "-j", "ACCEPT"],
             check=True
         )
         print(f"Unblocked IP: {ip}")
@@ -77,7 +77,7 @@ def initialize_block_all():
     """Block all incoming traffic to the port by default."""
     try:
         subprocess.run(
-            ["iptables", "-A", "INPUT", "-p", "udp", "--dport", str(PORT), "-j", "DROP"],
+            ["iptables", "-A", "INPUT", "-p", "all", "--dport", str(PORT), "-j", "DROP"],
             check=True
         )
         print(f"Port {PORT} is blocked for all IPs by default.")
