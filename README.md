@@ -16,3 +16,17 @@ This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamic
 - **macOS** or **Linux** (with `iptables` installed on Linux).
 - **Python 3.x** installed.
 - **Admin privileges** are required to run the script because it modifies firewall settings using **pfctl** (macOS) or **iptables** (Linux).
+
+
+# Open Sesame Server
+
+Open Sesame Server is a Python server that uses pfctl (macOS) or iptables (Linux) to block and unblock a UDP port based on the "open_sesame" and "close_sesame" keys. Admin privileges are required to modify firewall rules.
+
+## Versions
+
+- **server_simple.py**: A basic version of the server used for testing. It doesn't modify firewall rules and is ideal for quick testing.
+- **server_macos.py**: The version of the server for macOS, using **pfctl** to manage firewall rules.
+- **server_linux.py**: The version of the server for Linux, using **iptables** to manage firewall rules.
+- **client.py**: A client script used for testing the server, sending the "open_sesame" and "close_sesame" keys to control access.
+
+**server_simple.py** and **client.py** are primarily for testing. The other server versions (**server_macos.py** and **server_linux.py**) are self-explanatory and are used for the respective platforms' firewall management.
