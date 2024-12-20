@@ -35,8 +35,7 @@ The Open_Sesame server listens for incoming connections on a specified host and 
 
 1. **Select the Host IP**:
    - To restrict the server to a specific network interface, set `HOST` to the IP of that interface:
-     - Example: `HOST = "10.10.10.1"` for Wi-Fi or `HOST = "10.10.10.2"` for Ethernet.
-   - Use `HOST = "0.0.0.0"` to listen on all interfaces (less secure but more flexible).
+   - Use `HOST = "0.0.0.0"` to listen on all interfaces (less secure but more flexible). OTHERWISE use the IP address of the interface you would like the code to listen on
 
 2. **Firewall Configuration**:
    - The server dynamically manages access using `iptables` (Linux) or `pfctl` (macOS), blocking the specified port by default.
