@@ -28,3 +28,24 @@ This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamic
 - **client.py**: A client script used for testing the server, sending the "open_sesame" and "close_sesame" keys to control access.
 
 **server_simple.py** and **client.py** are primarily for testing. The other server versions (**server_macos.py** and **server_linux.py**) are self-explanatory and are used for the respective platforms' firewall management.
+
+## Setup
+
+The Open_Sesame server listens for incoming connections on a specified host and port. 
+
+1. **Select the Host IP**:
+   - To restrict the server to a specific network interface, set `HOST` to the IP of that interface:
+     - Example: `HOST = "10.10.10.1"` for Wi-Fi or `HOST = "10.10.10.2"` for Ethernet.
+   - Use `HOST = "0.0.0.0"` to listen on all interfaces (less secure but more flexible).
+
+2. **Firewall Configuration**:
+   - The server dynamically manages access using `iptables` (Linux) or `pfctl` (macOS), blocking the specified port by default.
+   - Ensure you have administrative privileges to allow the server to modify firewall rules.
+
+3. **Verify Network Interfaces**:
+   - Use `ifconfig` (macOS/Linux) or `ip addr` (Linux) to check your interface IPs before setting `HOST`.
+
+The server ensures secure, dynamic port access control, opening the port only for IPs that send the correct secret key.
+
+
+
