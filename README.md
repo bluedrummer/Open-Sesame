@@ -11,7 +11,7 @@ This server uses **iptables** (**Linux**) to dynamically block and unblock speci
 - **Block All IPs**: Initially, the server blocks all incoming traffic to the specified port.
 - **Unblock IPs**: When a client sends the correct **"open_sesame"** key, the server unblocks the port for that specific IP.
 - **Reblock IPs**: When the client sends the **"close_sesame"** key, the server blocks that IP from accessing the port again.
-- **Firewall Management**: Uses **pfctl** (macOS) or **iptables** (Linux) to dynamically manage firewall rules and block/unblock specific IPs.
+- **Firewall Management**: **iptables** (Linux) to dynamically manage firewall rules and block/unblock specific IPs.
 
 ## Prerequisites
 
