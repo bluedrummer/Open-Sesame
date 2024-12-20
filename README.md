@@ -1,5 +1,7 @@
 # Open Sesame Server
 
+**Version 1.0.0 – Pre-Beta (Initial working version)**
+
 The **Open Sesame Server** is a Python-based server that allows or denies access to a specific port based on the IP address of the client and the key they provide. The server starts with the port being blocked for all IPs. If a client sends the correct "open" code, their IP is unblocked for the port. If they send the "close" code, their IP is blocked again.
 
 This server uses **pfctl** on **macOS** and **iptables** on **Linux** to dynamically block and unblock specific IPs. It modifies firewall rules to allow access to the server's port based on the provided keys.
