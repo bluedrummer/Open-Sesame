@@ -44,7 +44,13 @@ The Open_Sesame server listens for incoming connections on a specified host and 
 3. **Verify Network Interfaces**:
    - Use `ifconfig` (macOS/Linux) or `ip addr` (Linux) to check your interface IPs before setting `HOST`.
 
+4. **Response to Attempts**
+   - The code defaults to having all responses commented out, making the server effectively 'silent.' This means the server does not respond to any messages from the sender, even if they provide the correct code. Instead, it passively opens the port for authorized IPs without providing any feedback.
+  
+   
 The server ensures secure, dynamic port access control, opening the port only for IPs that send the correct secret key.
+
+
 
 
 
