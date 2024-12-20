@@ -22,7 +22,7 @@ def unblock_ip(ip):
     """Unblock an IP from accessing this port using iptables."""
     try:
         subprocess.run(
-            ["iptables", "-D", "INPUT", "-s", ip, "-p", "all", "--dport", str(PORT), "-j", "ACCEPT"],
+            ["iptables", "-A", "INPUT", "-s", ip, "-p", "all", "--dport", str(PORT), "-j", "ACCEPT"],
             check=True
         )
         print(f"Unblocked IP: {ip}")
